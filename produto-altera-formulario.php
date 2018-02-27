@@ -6,7 +6,8 @@ require_once("class/Produto.php");
 
 $id = $_GET['id'];
 $produto = buscaProduto($conexao, $id);
-$categorias = listaCategorias($conexao);
+$categoriaDao = new CategoriaDao($conexao);
+$categorias = $categoriaDao->listaCategorias();
 
 $selecao_usado = $produto->isUsado() ? "checked='checked'" : "";
 $produto->setUsado = $selecao_usado;
